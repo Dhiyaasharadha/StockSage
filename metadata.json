@@ -1,0 +1,6 @@
+{
+  "name": "Stock Sage",
+  "description": "Explainable multi-model stock forecasting platform blending gradient-boosted trees and statistical time-series with bootstrap confidence intervals and SHAP feature attributions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
