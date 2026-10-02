@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bell, Sliders, ShieldCheck, Cpu, GitBranch, ArrowUpRight, TrendingUp } from 'lucide-react';
+import { Bell, Sliders, ShieldCheck, Cpu, GitBranch, ArrowUpRight, Database, CheckCircle2 } from 'lucide-react';
 
 interface ProductHeroProps {
   ticker: string;
@@ -21,11 +21,11 @@ export const ProductHero: React.FC<ProductHeroProps> = ({
   const isUp = returnPercent >= 0;
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-[#E8E3DA] bg-white p-6 sm:p-8 shadow-sm">
-      {/* Decorative Warm Ivory Corner Accents */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#F5F2EB]/80 via-transparent to-transparent pointer-events-none" />
+    <div className="relative overflow-hidden rounded-2xl border border-[#E8E3DA] bg-white p-6 sm:p-8 shadow-xs">
+      {/* Decorative Subtle Warm Ivory Gradient */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-[#FAF8F5] via-transparent to-transparent pointer-events-none" />
 
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         {/* Left Column: Platform Branding, Quantitative Pillars & CTAs (7 cols) */}
         <div className="lg:col-span-7 space-y-4">
           <div className="flex items-center gap-2">
@@ -35,7 +35,7 @@ export const ProductHero: React.FC<ProductHeroProps> = ({
             </span>
             <span className="text-stone-300">·</span>
             <span className="text-stone-500 text-xs font-mono">
-              Live Alpha Vantage Stream
+              Live Alpha Vantage Daily REST
             </span>
           </div>
 
@@ -88,62 +88,75 @@ export const ProductHero: React.FC<ProductHeroProps> = ({
           </div>
         </div>
 
-        {/* Right Column: Visual Photographic Card & Live Ticker Pill (5 cols) */}
+        {/* Right Column: Clean Quantitative Summary Card (No Pictures) (5 cols) */}
         <div className="lg:col-span-5 space-y-3">
-          {/* Main Visual Photo Card */}
-          <div className="relative overflow-hidden rounded-2xl border border-[#E8E3DA] shadow-md bg-stone-100 group">
-            <img
-              src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=800&q=80"
-              alt="Institutional Financial Trading Terminal"
-              className="w-full h-48 sm:h-52 object-cover transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
-            />
-            {/* Subtle Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-950/20 to-transparent" />
-
-            {/* Overlaid Badge */}
-            <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white text-xs">
+          {/* Main Predictive Snapshot Card */}
+          <div className="p-5 bg-[#FAF8F5] border border-[#E8E3DA] rounded-2xl space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-[#E8E3DA]">
               <div className="flex items-center gap-2">
-                <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"
-                  alt="Lead Quantitative Analyst"
-                  className="w-7 h-7 rounded-full border border-white/60 object-cover"
-                />
-                <div>
-                  <div className="font-bold text-white text-[11px] leading-tight">Quantitative Research Lab</div>
-                  <div className="text-[10px] text-stone-300">Alpha Vantage Certified Feed</div>
-                </div>
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-600" />
+                <span className="font-bold text-stone-900 text-sm">{ticker} Execution Model</span>
               </div>
-
-              <span className="px-2 py-0.5 rounded bg-emerald-500 text-stone-950 font-bold text-[10px] flex items-center gap-1 font-mono">
-                <TrendingUp className="w-3 h-3" />
-                Live Feed
+              <span className="text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold flex items-center gap-1">
+                <CheckCircle2 className="w-3 h-3" />
+                Live Stream
               </span>
             </div>
-          </div>
 
-          {/* Real-time Ticker Snapshot Pill */}
-          <div className="p-3.5 bg-[#FAF8F5] border border-[#E8E3DA] rounded-xl flex items-center justify-between">
-            <div>
-              <span className="text-[10px] text-stone-500 block uppercase tracking-wider font-bold">
-                {ticker} Next Session Target (Day T+1)
-              </span>
-              <div className="flex items-baseline gap-2 mt-0.5">
-                <span className="text-xl font-bold font-mono text-stone-900 tabular-nums">
+            {/* Target Price Row */}
+            <div className="flex items-center justify-between">
+              <div>
+                <span className="text-[11px] text-stone-500 block uppercase font-semibold">Day T+1 Target</span>
+                <span className="text-2xl font-bold font-mono text-stone-900 tabular-nums">
                   ${ensemblePrice.toFixed(2)}
                 </span>
-                <span className={`text-xs font-mono font-bold flex items-center ${isUp ? 'text-emerald-700' : 'text-rose-700'}`}>
+              </div>
+              <div className="text-right">
+                <span className="text-[11px] text-stone-500 block uppercase font-semibold">Settled Close</span>
+                <span className="text-base font-mono text-stone-700 font-semibold tabular-nums">
+                  ${lastClose.toFixed(2)}
+                </span>
+              </div>
+              <div className="text-right">
+                <span className="text-[11px] text-stone-500 block uppercase font-semibold">Expected Delta</span>
+                <span className={`text-sm font-mono font-bold flex items-center justify-end ${isUp ? 'text-emerald-700' : 'text-rose-700'}`}>
                   <ArrowUpRight className={`w-3.5 h-3.5 ${!isUp ? 'rotate-90' : ''}`} />
                   {isUp ? '+' : ''}{returnPercent.toFixed(2)}%
                 </span>
               </div>
             </div>
 
-            <div className="text-right border-l border-[#E8E3DA] pl-4">
-              <span className="text-[10px] text-stone-500 block">Settled Close</span>
-              <span className="text-sm font-mono text-stone-800 font-semibold tabular-nums">
-                ${lastClose.toFixed(2)}
+            {/* Mini Quantitative Architecture Breakdown */}
+            <div className="space-y-2 pt-2 border-t border-[#E8E3DA] text-xs">
+              <div className="flex items-center justify-between text-stone-600 font-mono text-[11px]">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                  Gradient-Boosted Trees:
+                </span>
+                <span className="font-bold text-stone-800">55% weight</span>
+              </div>
+              <div className="w-full bg-[#E8E3DA] h-1.5 rounded-full overflow-hidden">
+                <div className="bg-emerald-600 h-full rounded-full" style={{ width: '55%' }} />
+              </div>
+
+              <div className="flex items-center justify-between text-stone-600 font-mono text-[11px] pt-1">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-600" />
+                  Autoregressive Ridge:
+                </span>
+                <span className="font-bold text-stone-800">45% weight</span>
+              </div>
+              <div className="w-full bg-[#E8E3DA] h-1.5 rounded-full overflow-hidden">
+                <div className="bg-blue-600 h-full rounded-full" style={{ width: '45%' }} />
+              </div>
+            </div>
+
+            <div className="text-[11px] text-stone-500 pt-1 flex items-center justify-between border-t border-[#E8E3DA]">
+              <span className="flex items-center gap-1">
+                <Database className="w-3 h-3 text-emerald-600" />
+                Alpha Vantage TIME_SERIES_DAILY
               </span>
+              <span className="font-mono text-stone-400">T+1 Session</span>
             </div>
           </div>
         </div>

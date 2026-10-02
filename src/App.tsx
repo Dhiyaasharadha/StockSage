@@ -3,7 +3,6 @@ import { TopNav } from './components/TopNav.tsx';
 import { ProductHero } from './components/ProductHero.tsx';
 import { MetricCards } from './components/MetricCards.tsx';
 import { ForecastChart } from './components/ForecastChart.tsx';
-import { InstitutionalFeatures } from './components/InstitutionalFeatures.tsx';
 import { ShapAttributionCard } from './components/ShapAttributionCard.tsx';
 import { WhatIfSimulator } from './components/WhatIfSimulator.tsx';
 import { SentimentGaugeCard } from './components/SentimentGaugeCard.tsx';
@@ -336,12 +335,7 @@ export default function App() {
           />
         </section>
 
-        {/* Section 3: Institutional Architecture & Photography Showcase */}
-        <section>
-          <InstitutionalFeatures />
-        </section>
-
-        {/* Section 4: Two-Column Section: What-If Sensitivity Simulator + Sentiment Radar */}
+        {/* Section 3: Two-Column Section: What-If Sensitivity Simulator + Sentiment Radar */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           <section id="whatif" className="lg:col-span-6 scroll-mt-20">
             <WhatIfSimulator
