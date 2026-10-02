@@ -28,11 +28,13 @@ const CACHE_TTL_MS = 15 * 60 * 1000; // 15 minutes
 // Initialize AAPL prebundled into cache immediately for instant cold-start
 const prebundledAAPL = generatePrebundledAAPL();
 
-// Warm cache with live Alpha Vantage data asynchronously
+// Warm cache for AAPL asynchronously on startup (uses whichever data
+// source actually succeeds: Alpha Vantage -> Stooq -> synthetic fallback)
 runForecastingPipeline('AAPL', process.env.ALPHAVANTAGE_API_KEY)
   .then((res) => {
     pipelineCache.set('AAPL', { result: res, timestamp: Date.now() });
-    console.log('[Stock Sage] Cache pre-warmed with live Alpha Vantage market data for AAPL.');
+    const ds = res?.forecast?.dataSource;
+    console.log(`[Stock Sage] Cache pre-warmed for AAPL. Data source: ${ds?.sourceName ?? 'unknown'} (fallback: ${ds?.isFallback ?? 'unknown'}).`);
   })
   .catch((err) => {
     console.warn('[Stock Sage] Startup cache warming notice:', err?.message);

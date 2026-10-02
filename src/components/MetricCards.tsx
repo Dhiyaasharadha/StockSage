@@ -134,7 +134,7 @@ export const MetricCards: React.FC<MetricCardsProps> = ({
         {/* Card 4: News Sentiment Indicator */}
         <div className="p-4 bg-white border border-[#E8E3DA] rounded-2xl shadow-xs">
           <div className="text-xs font-semibold text-stone-500 uppercase tracking-wide">
-            FinBERT News Sentiment
+            Lexicon-Based News Sentiment
           </div>
           <div className="mt-1 flex items-baseline gap-2">
             <span className="text-2xl font-bold tracking-tight text-stone-900 tabular-nums">

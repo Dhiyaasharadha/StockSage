@@ -24,7 +24,7 @@ Stock Sage is architected in a modular pipeline where each stage has a distinct 
                 ▼
 [ News Sentiment Analyzer ]
     ├── Real-Time RSS Headlines (Yahoo Finance & Google News Financial RSS)
-    └── FinBERT Financial Sentiment Engine (Categorical Polarity & Confidence)
+    └── Financial Sentiment Lexicon Engine (Categorical Polarity & Confidence)
                 │
                 ▼
 [ Multi-Model Forecasting Ensemble ]
@@ -45,7 +45,7 @@ Stock Sage is architected in a modular pipeline where each stage has a distinct 
               [ Interactive Real-Time Dashboard ]
                   ├── Multi-Layer Chart with CI Fan
                   ├── Interactive "What-If" Sensitivity Lab
-                  ├── FinBERT Sentiment Radar & Headliner Feed
+                  ├── Sentiment Lexicon Radar & Headliner Feed
                   └── Model Backtest & Residual Distribution
 ```
 
@@ -66,11 +66,11 @@ Stock Sage is architected in a modular pipeline where each stage has a distinct 
 - **Momentum**: 14-day Wilder's Relative Strength Index (RSI) bounded in $[0, 100]$ and 5-day cumulative return percentage.
 - **Sentiment**: Daily aggregate score bounded in $[-1.0, 1.0]$.
 
-### 3. Financial News Sentiment (FinBERT Lexical Engine)
+### 3. Financial News Sentiment (Domain-Specific Lexicon Engine)
 - Scrapes live RSS headlines without aggressive bot-blocking hurdles.
-- Evaluates domain-specific financial terminology (e.g. "beats estimates", "raises guidance", "dividend hike" vs "downgrades", "layoffs", "SEC investigation").
+- Scores each headline with a hand-built regex/keyword lexicon (weighted financial-domain phrases, e.g. "beats estimates", "raises guidance", "dividend hike" vs "downgrades", "layoffs", "SEC investigation"), inspired by Loughran-McDonald financial-sentiment word lists and FinBERT-style financial NLP research. **This is a rule-based scorer, not an actual pretrained transformer model** — no FinBERT weights are loaded or run.
 - Computes headline polarity, confidence intervals, and daily average tone.
-- Degrades gracefully to an offline-indexed headline cache if networks are unreachable.
+- Degrades gracefully to a pre-indexed, clearly-labeled fallback headline set if RSS feeds are unreachable.
 
 ### 4. Forecasting Ensemble
 - **Gradient-Boosted Decision Trees (GBDT)**: Fits an ensemble of shallow regression trees on negative gradients (residuals) of Mean Squared Error, equipped with shrinkage (learning rate) and subsampling. Captures non-linear feature interactions and threshold effects (e.g., RSI overbought above 70).

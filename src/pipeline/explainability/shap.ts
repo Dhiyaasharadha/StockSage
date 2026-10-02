@@ -60,9 +60,9 @@ export const FEATURE_METADATA: Record<string, {
     format: (v) => `${v > 0 ? '+' : ''}${v.toFixed(2)}`,
     generateText: (v, phi) => {
       if (v > 0.2) {
-        return `FinBERT aggregated news headlines tilt bullish (+${v.toFixed(2)}). Positive headline narrative added $${Math.abs(phi).toFixed(2)} to forecast.`;
+        return `Lexicon-scored news headlines tilt bullish (+${v.toFixed(2)}). Positive headline narrative added $${Math.abs(phi).toFixed(2)} to forecast.`;
       } else if (v < -0.2) {
-        return `FinBERT aggregated news headlines tilt bearish (${v.toFixed(2)}). Negative media tone deducted $${Math.abs(phi).toFixed(2)} from forecast.`;
+        return `Lexicon-scored news headlines tilt bearish (${v.toFixed(2)}). Negative media tone deducted $${Math.abs(phi).toFixed(2)} from forecast.`;
       } else {
         return `News coverage is broadly neutral/balanced (${v.toFixed(2)}). Minimal narrative bias ($${phi >= 0 ? '+' : '-'}${Math.abs(phi).toFixed(2)}).`;
       }

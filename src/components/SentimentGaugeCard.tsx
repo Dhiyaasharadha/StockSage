@@ -50,7 +50,7 @@ export const SentimentGaugeCard: React.FC<SentimentGaugeCardProps> = ({
         <div>
           <h2 className="text-sm font-bold tracking-tight text-stone-900 flex items-center gap-2">
             <Newspaper className="w-4 h-4 text-emerald-600" />
-            FinBERT Financial Sentiment Radar
+            Financial Sentiment Radar
           </h2>
           <p className="text-xs text-stone-500 mt-0.5">
             Real-time financial headline sentiment scoring trained on market press & earnings releases.
@@ -146,7 +146,7 @@ export const SentimentGaugeCard: React.FC<SentimentGaugeCardProps> = ({
       <div className="space-y-2">
         <div className="flex items-center justify-between text-xs text-stone-600 font-semibold">
           <span>Processed Institutional Headlines ({headlines.length})</span>
-          <span className="text-[11px] text-stone-400 font-normal">FinBERT Scored</span>
+          <span className="text-[11px] text-stone-400 font-normal">Lexicon Scored</span>
         </div>
 
         <div className="space-y-2 max-h-56 overflow-y-auto pr-1">

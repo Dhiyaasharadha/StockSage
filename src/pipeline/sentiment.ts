@@ -1,6 +1,6 @@
 import { HeadlineSentiment } from '../types/index.ts';
 
-// FinBERT / Loughran-McDonald inspired domain-specific financial sentiment lexicons
+// Domain-specific financial sentiment lexicon, inspired by Loughran-McDonald / FinBERT-style financial NLP research (not an actual pretrained FinBERT model)
 const FINANCIAL_POSITIVE_PATTERNS = [
   { regex: /\b(beat|beats|beating|exceeded|outperformed|surpassed)\b/i, weight: 0.85 },
   { regex: /\b(upgrade|upgraded|upgrades|buy\s+rating|overweight)\b/i, weight: 0.8 },

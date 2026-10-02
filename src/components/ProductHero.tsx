@@ -46,7 +46,7 @@ export const ProductHero: React.FC<ProductHeroProps> = ({
           <p className="text-xs sm:text-sm text-stone-600 leading-relaxed max-w-xl">
             Stock Sage fuses <strong className="text-emerald-700 font-semibold">Gradient-Boosted Trees</strong>,{' '}
             <strong className="text-blue-700 font-semibold">Autoregressive Ridge Time-Series</strong>, and{' '}
-            <strong className="text-amber-700 font-semibold">FinBERT Sentiment</strong> with{' '}
+            <strong className="text-amber-700 font-semibold">Financial Lexicon Sentiment</strong> with{' '}
             <strong className="text-stone-900 font-semibold">TreeSHAP</strong> marginal attribution and non-parametric bootstrap confidence corridors.
           </p>
 

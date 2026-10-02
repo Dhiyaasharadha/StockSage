@@ -19,7 +19,12 @@ export interface IngestionResult {
  */
 export async function ingestStockData(ticker: string, apiKeyOverride?: string): Promise<IngestionResult> {
   const cleanTicker = ticker.toUpperCase().trim();
-  const apiKey = apiKeyOverride || (typeof process !== 'undefined' ? process.env?.ALPHAVANTAGE_API_KEY : '') || 'YJIQ5QO73Q3YWYHH';
+  // NOTE: no hardcoded fallback key here on purpose -- this repo is public,
+  // and committing a real API key (even a free-tier one) into source
+  // control means anyone viewing the repo can use/exhaust it. Set
+  // ALPHAVANTAGE_API_KEY as an environment variable on your deployment
+  // instead (see README).
+  const apiKey = apiKeyOverride || (typeof process !== 'undefined' ? process.env?.ALPHAVANTAGE_API_KEY : '') || '';
 
   // --- Step 1: Alpha Vantage Official TIME_SERIES_DAILY API ---
   if (apiKey) {

@@ -118,7 +118,7 @@ export const WhatIfSimulator: React.FC<WhatIfSimulatorProps> = ({
         <div className="space-y-2">
           <div className="flex justify-between text-xs">
             <span className="font-semibold text-stone-800">
-              FinBERT Sentiment Override
+              Sentiment Override
             </span>
             <span
               className={`font-mono font-bold tabular-nums ${
